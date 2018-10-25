@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import './../index.css';
 
 class MovieItem extends Component {
@@ -7,8 +6,16 @@ class MovieItem extends Component {
     super(props);
     this.state = {};
   }
+
   render() {
-    return <h1>movie item works!</h1>;
+    const { movie } = this.props;
+    const imgURL = 'https://image.tmdb.org/t/p/w300/';
+    return (
+      <li key="movie.id">
+        <span>{this.props.movie.title}</span>
+        <img src={imgURL + movie.backdrop_path} alt="movie-img" />
+      </li>
+    );
   }
 }
 

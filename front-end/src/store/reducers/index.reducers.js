@@ -1,45 +1,23 @@
-import { combineReducers } from 'redux';
 import { types } from '../actions/index.actions';
 
 const initialState = {
-  // have to set discover list to a fetch call?
-  // make fetch call on componentDidMount
-  discoverMovies: [],
-  myMovies: []
+  discoverList: [],
+  myListIDs: []
 };
 
-const discoverList = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_DISCOVER_MOVIES:
+    case types.POPULATE_MOVIE_LIST:
+      // console.log('hi!', action.list, action.movies);
       return {
         ...state,
-        discoverMovies: action.movies
+        [action.list]: action.movies
       };
+    case types.TOGGLE_FROM_LIST:
+      return;
     default:
       return state;
   }
 };
 
-const myList = (state = initialState, action) => {
-  switch (action.type) {
-    case types.ADD_MOVIE:
-      return {
-        ...state,
-        myMovies: [...state.myMovies, action.movie]
-      };
-    case types.REMOVE_MOVIE:
-      return {
-        ...state,
-        myMovies: state.myMovies.filter(movie => movie.id !== action.id)
-      };
-    default:
-      return state;
-  }
-};
-
-const reducers = combineReducers({
-  discoverList,
-  myList
-});
-
-export default reducers;
+export default reducer;

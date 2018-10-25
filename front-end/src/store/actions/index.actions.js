@@ -1,20 +1,15 @@
 export const types = {
-  ADD_MOVIE: 'ADD_MOVIE',
-  REMOVE_MOVIE: 'REMOVE_MOVIE',
-  GET_DISCOVER_MOVIES: 'GET_DISCOVER_MOVIES'
+  POPULATE_MOVIE_LIST: 'POPULATE_MOVIE_LIST',
+  TOGGLE_FROM_LIST: 'TOGGLE_FROM_LIST'
 };
 
-export const getDiscoverMovies = movies => ({
-  type: types.GET_DISCOVER_MOVIES,
+export const populateMovieList = (list, movies) => ({
+  type: types.POPULATE_MOVIE_LIST,
+  list,
   movies
 });
 
-export const addMovie = movie => ({
-  type: types.ADD_MOVIE,
+export const toggleIsInMyList = movie => ({
+  type: types.TOGGLE_FROM_LIST,
   movie
-});
-
-export const removeMovie = id => ({
-  type: types.REMOVE_MOVIE,
-  id
 });
