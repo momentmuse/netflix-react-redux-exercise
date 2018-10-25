@@ -5,11 +5,11 @@ import './../index.css';
 class DiscoverList extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = {};
   }
-  render() { 
-    return (  );
+  render() {
+    return <h1>discover-list works!</h1>;
   }
 }
- 
+
 export default DiscoverList;
