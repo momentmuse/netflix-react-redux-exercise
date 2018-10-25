@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import './../index.css';
+import { addMovie, removeMovie } from '../store/actions/index.actions';
 
 class MyList extends Component {
   constructor(props) {
@@ -12,4 +13,16 @@ class MyList extends Component {
   }
 }
 
-export default MyList;
+const mapStateToProps = state => ({
+  myList: state.myList.myMovies
+});
+
+const mapDispatchToProps = dispatch => ({
+  addMovie: movie => dispatch(addMovie(movie)),
+  removeMovie: id => dispatch(removeMovie(id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyList);
