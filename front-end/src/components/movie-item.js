@@ -8,12 +8,12 @@ class MovieItem extends Component {
     return (
       <div className="movie-element">
         <li key="movie.id">
-          <span className="movie-title">{movie.title}</span>
           <img
             src={imgURL + movie.backdrop_path}
             onClick={() => toggleIsInMyList(movie.id)}
             alt="movie-img"
           />
+          <span className="movie-title">{movie.title}</span>
         </li>
       </div>
     );

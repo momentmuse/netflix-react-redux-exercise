@@ -16,8 +16,13 @@ code {
 }
 
 .my-list-container, .discover-list-container {
+  margin: auto;
   max-width: 95vw;
   overflow-x: scroll;
+}
+
+p {
+  margin: auto;
 }
 
 ul {

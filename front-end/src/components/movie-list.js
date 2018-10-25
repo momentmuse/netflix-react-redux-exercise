@@ -36,7 +36,7 @@ class MovieList extends Component {
             {myListIDs.length > 0 ? (
               this.renderMoviesfromID(myListIDs, discoverList)
             ) : (
-              <p>You haven't saved any movies!</p>
+              <p>You haven't saved any movies! 😥</p>
             )}
           </ul>
         </div>
