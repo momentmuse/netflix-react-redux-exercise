@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import './../index.css';
 
 class MovieItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
-    const { movie } = this.props;
+    const { movie, toggleIsInMyList } = this.props;
     const imgURL = 'https://image.tmdb.org/t/p/w300/';
     return (
-      <li key="movie.id">
-        <span>{this.props.movie.title}</span>
-        <img src={imgURL + movie.backdrop_path} alt="movie-img" />
-      </li>
+      <div className="movie-element">
+        <li key="movie.id">
+          <span className="movie-title">{movie.title}</span>
+          <img
+            src={imgURL + movie.backdrop_path}
+            onClick={() => toggleIsInMyList(movie.id)}
+            alt="movie-img"
+          />
+        </li>
+      </div>
     );
   }
 }

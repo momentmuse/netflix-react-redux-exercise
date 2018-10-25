@@ -9,7 +9,7 @@ export const populateMovieList = (list, movies) => ({
   movies
 });
 
-export const toggleIsInMyList = movie => ({
+export const toggleIsInMyList = id => ({
   type: types.TOGGLE_FROM_LIST,
-  movie
+  id
 });

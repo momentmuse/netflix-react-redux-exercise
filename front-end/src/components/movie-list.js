@@ -9,11 +9,6 @@ import {
 import MovieItem from './movie-item';
 
 class MovieList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   componentDidMount() {
     fetch('https://movied.herokuapp.com/discover')
       .then(res => res.json())
@@ -21,29 +16,35 @@ class MovieList extends Component {
   }
 
   renderMovieList = arr => {
-    return arr.map(movie => <MovieItem movie={movie} />);
+    return arr.map(movie => (
+      <MovieItem movie={movie} toggleIsInMyList={this.props.toggleIsInMyList} />
+    ));
   };
 
-  renderMovieListfromID = arr => {};
+  renderMoviesfromID = (idList, movieList) => {
+    const filteredList = movieList.filter(movie => idList.includes(movie.id));
+    return this.renderMovieList(filteredList);
+  };
 
   render() {
+    const { myListIDs, discoverList } = this.props;
     return (
       <React.Fragment>
+        <h1>My List</h1>
         <div className="my-list-container">
-          <h1>my-list works!</h1>
           <ul className="my-list">
-            {this.props.myListIDs.length > 0 ? (
-              this.renderMovieListfromID(this.props.myListIDs)
+            {myListIDs.length > 0 ? (
+              this.renderMoviesfromID(myListIDs, discoverList)
             ) : (
               <p>You haven't saved any movies!</p>
             )}
           </ul>
         </div>
+        <h1>Discover List</h1>
         <div className="discover-list-container">
-          <h1>discover-list works!</h1>
           <ul className="discover-list">
-            {this.props.discoverList.length > 0 ? (
-              this.renderMovieList(this.props.discoverList)
+            {discoverList.length > 0 ? (
+              this.renderMovieList(discoverList)
             ) : (
               <p>Loading Movie List</p>
             )}
@@ -61,7 +62,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   populateMovieList: (list, arr) => dispatch(populateMovieList(list, arr)),
-  toggleIsInMyList: movie => dispatch(toggleIsInMyList(movie))
+  toggleIsInMyList: id => dispatch(toggleIsInMyList(id))
 });
 
 export default connect(
