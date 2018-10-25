@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { types } from './../actions';
+import { types } from '../actions/index.actions';
 
 const initialState = {
   // have to set discover list to a fetch call?
